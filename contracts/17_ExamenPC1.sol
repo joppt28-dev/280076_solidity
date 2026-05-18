@@ -35,4 +35,24 @@ contract Hospital280076 {
         return pacientes;
     }
 
+    function inactivarElemento (uint _posicion) public {
+        pacientes[_posicion].estado = false;
+    }
+
+    function mostrarElementosActivos() public consultadoPor{
+        for (uint i = 0; i < pacientes.length; i++) {
+            if (pacientes[i].estado == true) {
+                console.log("Paciente activo : ID:", pacientes[i].id, "| Nombre:", pacientes[i].nombre_paciente);
+            }
+        }
+    }
+
+    function mostrarElementosImpares() public consultadoPor {
+        for (uint i = 0; i < pacientes.length; i++) {
+            if (pacientes[i].id % 2 != 0) {
+                console.log("Paciente ID Impar : ID:", pacientes[i].id, "| Nombre:", pacientes[i].nombre_paciente);
+            }
+        }
+    }
+
 }
