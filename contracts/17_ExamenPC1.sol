@@ -12,8 +12,20 @@ contract Hospital280076 {
 
     Paciente[]  public pacientes;
 
+    address public dirContrato = address(this);
+
     constructor () {
         console.log("Ejecutado por: 280076 - Josue Paulo Pulido Torres");
     }
 
+    function agregarElemento(uint _id, string memory _nombre_paciente, uint _edad) public {
+        pacientes.push(Paciente(_id, _nombre_paciente, _edad));
+    }
+
+    function contarElementos () public view returns (Paciente[] memory){
+        console.log("Ejecutado por: 280076 - Josue Paulo Pulido Torres");
+        return pacientes;
+    }
+
+    
 }
