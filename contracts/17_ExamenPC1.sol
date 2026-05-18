@@ -8,24 +8,31 @@ contract Hospital280076 {
         uint id;
         string nombre_paciente;
         uint edad;
+        bool estado;
     }
 
     Paciente[]  public pacientes;
 
     address public dirContrato = address(this);
 
-    constructor () {
+    modifier consultadoPor() {
         console.log("Ejecutado por: 280076 - Josue Paulo Pulido Torres");
+        _;
     }
 
-    function agregarElemento(uint _id, string memory _nombre_paciente, uint _edad) public {
-        pacientes.push(Paciente(_id, _nombre_paciente, _edad));
+    constructor () consultadoPor{
     }
 
-    function contarElementos () public view returns (Paciente[] memory){
-        console.log("Ejecutado por: 280076 - Josue Paulo Pulido Torres");
+    function agregarElemento(uint _id, string memory _nombre_paciente, uint _edad, bool _estado) public consultadoPor {
+        for (uint i = 0; i < pacientes.length; i++) {
+            require(pacientes[i].id != _id, "Error: El ID del paciente ya se encuentra registrado.");
+        }
+        require(_edad > 10, "La edad debe ser mayor a 10");
+        pacientes.push(Paciente(_id, _nombre_paciente, _edad, _estado));
+    }
+
+    function contarElementos () public view consultadoPor returns (Paciente[] memory) {
         return pacientes;
     }
 
-    
 }
