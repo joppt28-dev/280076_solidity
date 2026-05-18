@@ -49,7 +49,7 @@ contract Hospital280076 {
         pacientes[_id].estado = false;
     }
 
-    function mostrarElementosActivos() public consultadoPor{
+    function mostrarElementosActivos() public view consultadoPor{
         for (uint i = 0; i < idsPacientes.length; i++) {
             uint idActual = idsPacientes[i];
             if (pacientes[idActual].estado == true) {
@@ -58,7 +58,7 @@ contract Hospital280076 {
         }
     }
 
-    function mostrarElementosImpares() public consultadoPor {
+    function mostrarElementosImpares() public view consultadoPor {
         for (uint i = 0; i < idsPacientes.length; i++) {
             uint idActual = idsPacientes[i];
             if (idActual % 2 != 0) {
