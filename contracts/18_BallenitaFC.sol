@@ -5,8 +5,29 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract BallenitaFCToken is ERC20 {
 
+    address public owner;
+    uint256 public maxSupplay;
+
     constructor() ERC20("Ballenita FC Token", "BFT") {
-        _mint(msg.sender, 1000);
+        owner = msg.sender;
+        _mint(owner, 1000);
+    }
+
+    modifier isPropietario() {
+        require(msg.sender == owner, "No eres el propietario");
+        _;
+    }
+
+    //función mintear (colocar tokens a una cuenta)
+    function mintear(address to, uint256 cantidad) public isPropietario{
+        _mint(to, cantidad);
+    }
+    //minteamos 2000 tokens a la cuenta 3, por lo que se
+    //realiza un EMISIÓN (crear más tokens y aumentar el totalSupply) 
+
+    
+    function esSocio(address cuenta) public view returns (bool) {
+        return balanceOf(cuenta) > 0;
     }
 
 }
