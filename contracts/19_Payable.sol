@@ -14,6 +14,10 @@ contract Teleton {
         _;
     }
 
+    function transferOwnership (address nuevoOwner) public isPropietario {
+        owner = nuevoOwner;
+    }
+
     //
     function depositar() public payable {
 
