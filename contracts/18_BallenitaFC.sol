@@ -10,7 +10,7 @@ contract BallenitaFCToken is ERC20 {
 
     constructor() ERC20("Ballenita FC Token", "BFT") {
         owner = msg.sender;
-        _mint(owner, 1000);
+        _mint(owner, 1000 * 10**18);
     }
 
     modifier isPropietario() {
