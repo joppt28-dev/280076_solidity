@@ -26,7 +26,7 @@ contract BallenitaNFT is ERC721, Ownable {
 
     function mint(address to, string memory _nombre, uint256 _level, uint256 _rareza) public onlyOwner {
         
-        idPoster = _contadorId;
+        uint256 idPoster = _contadorId;
 
         /*posters[idPoster] = Poster({
             id : _contadorId,
@@ -37,7 +37,7 @@ contract BallenitaNFT is ERC721, Ownable {
 
         posters[idPoster] = Poster(idPoster, _nombre, _level, _rareza);
 
-        _safeMint(to, _contadorId++, _nombre, level, rareza);
+        _safeMint(to, _contadorId);
 
         _contadorId++;
     }
