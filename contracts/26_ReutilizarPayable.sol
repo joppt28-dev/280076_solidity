@@ -8,7 +8,7 @@ interface ITeleton {
 
     /*modificadores: 
         - public (acceso desde cualquier parte del contrato)
-        - external (acceso solo desde fuera del contrato)
+        - external (solo puede ser llamada desde fuera del contrato)
         - private (acceso solo desde dentro del contrato)
         - default 
     */
